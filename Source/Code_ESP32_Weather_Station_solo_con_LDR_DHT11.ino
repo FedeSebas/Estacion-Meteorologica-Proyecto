@@ -42,7 +42,7 @@ void debugBMPTemperatura()
   }                                   
     Serial.print("temperatura: ");                                         
     Serial.print(temperatura);                                         
-    Serial.println(" Cº");    
+    Serial.println(" ºC");    
 }
 
 void debugBMPPesion()
@@ -96,9 +96,9 @@ String leerBMPPresion()
 {
   presion = bmp.readPressure() / 100;
   if (!bmp.begin())
-  {                                         // si falla la comunicacion con el sensor mostrar
-    Serial.println("BMP280 no encontrado"); // texto y detener flujo del programa
-    return "--";                            // mediante bucle infinito
+  {                                         
+    Serial.println("BMP280 no encontrado"); 
+    return "--";                            
   }
   else
   {                            
@@ -115,7 +115,6 @@ String leerLDR()
 
 String leerDHTHumedad()
 {
-  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   humedad = dht.readHumidity();
   if (isnan(humedad))
   {
@@ -176,7 +175,7 @@ const char index_html[] PROGMEM = R"rawliteral(
     <i class="fas fa-wind" style="color:#0080ff;"></i> 
     <span class="sensor-labels">Presion</span>
     <span id="presion">%PRESION%</span>
-    <sup class="units">hPa;</sup>
+    <sup class="units">hPa</sup>
   </p>
 </body>
 <script>
